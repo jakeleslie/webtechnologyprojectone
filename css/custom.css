@@ -13,3 +13,6 @@ body{
     margin-top: 50px;
     margin-right: 10px;
 }
+#contentLeft {
+    margin-left: 10px;
+}

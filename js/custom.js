@@ -10,16 +10,29 @@ const url = 'https://www.balldontlie.io/api/v1/players' //this will get all play
 // }).catch(function(err){
 //     console.warn('something went wrong', err)
 // })
+
 function fetchData() {
-fetch(url).then(function (response){
-    console.log("sucessfully called the api", response)
-    return response.json()
-}).then(function (data) { //returns our data
-    console.log(data) //array of 25 players in the console
-}).catch(function(err){
-    console.warn("something is amuck", err)
-})
+    fetch(url)
+        .then(response => {
+            if (!response.ok){
+               throw Error("ERROR")
+            }
+            return response.json()
+        })
+        .then(data => {
+            console.log(data.data)
+            const html = data.data.map(user => {
+                return `<p>Name: ${user.first_name}</p>`
+            })
+            console.log(html)
+            document.querySelector('#contentLeft').innerHTML = '<h1>test</h1>'
+            document.querySelector('#contentRight').innerHTML = '<h1>hi</h1>'
+        })
+        .catch(error => {
+            console.log(error)
+        })
 }
+
 fetchData() //this function call gets the api data
 
 
@@ -30,3 +43,17 @@ fetchData() //this function call gets the api data
 //p.innerText = the response i think
 //if we pass in a numer at the end of players in the url, we get a specific players
 //information
+
+
+// fetch(url)
+//     .then(function (response){
+//         console.log("sucessfully called the api", response)
+//         return response.json()
+//     })
+//     .then(function (data) { //returns our data
+//         console.log(data.data) //array of 25 players in the console
+//     })
+//     .catch(function(err){
+//         alert('something is amuck', err)
+//         console.warn("something is amuck", err)
+//     })
