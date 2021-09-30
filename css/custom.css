@@ -10,32 +10,23 @@ body{
     width: 33%;
     height: 300px;
     background-color: #d3d3d3;
-    margin-top: 60px;
+    margin-top: 30px;
     margin-right: 10px;
     border-radius: 5px;
+    
+}
+.contentTitle{
+    width: 33%;
+    height: 100px;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    color: white;
     
 }
 #title{
     color: white;
     margin-top: 5px;
-}
-#divheaders{
-    color: white;
-    width: 100%;
-    margin-top: 60px;
-}
-#pstats{
-position: relative;
-left: 130px;
-
-}
-#tstats{
-    position: relative;
-    left: 330px;
-}
-#ostats{
-    position: relative;
-    left: 530px;
 }
 #contentLeft {
     margin-left: 10px;
