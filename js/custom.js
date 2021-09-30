@@ -1,18 +1,62 @@
-//selectors
-const playerContainerLeft = document.getElementById('contentLeft')
-const playerContainerMid = document.getElementById('contentMid')
-const playerContainerRight = document.getElementById('contentRight')
+const players = 'https://www.balldontlie.io/api/v1/season_averages?season=2018&player_ids[]=1&player_ids[]=2' //this will get all players
+const teamStats = 'https://www.balldontlie.io/api/v1/teams'
+const seasonAverages = 'https://www.balldontlie.io/api/v1/season_averages'
 
-const url = 'https://www.balldontlie.io/api/v1/players' //this will get all players
+function fetchLeftData() {
+    fetch(players)
+        .then(response => {
+            if (!response.ok){
+               throw Error("ERROR")
+               
+            }
+            return response.json()
+        })
+        .then(data => {
+            console.log(data.data) //have to change this so that i can just get a statistic 
+            const html = data.data
+            .map(user => { //gets a map of all of the queried players first names. 
+                return `<p>Assists: ${user.ast}</p>`
+            })
+            .join("") //makes it a bunch of paragraph tags instead of array
+            
+            console.log(html)
+            document.querySelector('#contentLeft').innerHTML = html
+        })
+        .catch(error => {
+            console.log(error) //alert for error 
+            alert("There was an error requesting data.\n" + error);
+            
+        })
+}
 
-// fetch(url).then(function(response){ //accurately lets know if theres an error in console
-//     console.log('sucess!', response)
-// }).catch(function(err){
-//     console.warn('something went wrong', err)
-// })
+function fetchMiddleData() {
+    fetch(teamStats)
+        .then(response => {
+            if (!response.ok){
+               throw Error("ERROR")
+               
+            }
+            return response.json()
+        })
+        .then(data => {
+            console.log(data.data)
+            const html = data.data
+            .map(user => {
+                return `<p>Team: ${user.city}</p>`
+            })
+            .join("") //makes it a bunch of paragraph tags instead of array
+            
+            console.log(html)
+            document.querySelector('#contentMid').innerHTML = html
+        })
+        .catch(error => {
+            console.log(error) //alert for error 
+            alert("There was an error requesting data.\n" + error);
+        })
+}
 
-function fetchData() {
-    fetch(url)
+function fetchRightData() {
+    fetch(seasonAverages)
         .then(response => {
             if (!response.ok){
                throw Error("ERROR")
@@ -21,39 +65,22 @@ function fetchData() {
         })
         .then(data => {
             console.log(data.data)
-            const html = data.data.map(user => {
-                return `<p>Name: ${user.first_name}</p>`
+            const html = data.data
+            .map(user => {
+                return `<p>Games played: ${user.season}</p>`
             })
+            .join("") //makes it a bunch of paragraph tags instead of array
+            
             console.log(html)
-            document.querySelector('#contentLeft').innerHTML = '<h1>test</h1>'
-            document.querySelector('#contentRight').innerHTML = '<h1>hi</h1>'
+            document.querySelector('#contentRight').innerHTML = html
         })
         .catch(error => {
-            console.log(error)
+            console.log(error) //alert for error 
+            alert("There was an error requesting data.\n" + error);
         })
 }
-
-fetchData() //this function call gets the api data
-
-
-//i think this is what i need
-//function has to happen
-//let p = document.createElement('p')
-//p.classList.add('p') this is the name of the stylign inside the quotes
-//p.innerText = the response i think
-//if we pass in a numer at the end of players in the url, we get a specific players
-//information
-
-
-// fetch(url)
-//     .then(function (response){
-//         console.log("sucessfully called the api", response)
-//         return response.json()
-//     })
-//     .then(function (data) { //returns our data
-//         console.log(data.data) //array of 25 players in the console
-//     })
-//     .catch(function(err){
-//         alert('something is amuck', err)
-//         console.warn("something is amuck", err)
-//     })
+window.addEventListener('load', (event) => { //new calls on each load 
+fetchLeftData()
+fetchMiddleData()
+fetchRightData() 
+}) //Everytime page loads api data is loaded from api 
