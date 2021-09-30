@@ -1,4 +1,4 @@
-const players = 'https://www.balldontlie.io/api/v1/season_averages?season=2018&player_ids[]=237&player_ids[]=2' //this will get all players
+const players = 'https://www.balldontlie.io/api/v1/season_averages?season=2018&player_ids[]=237' //this will get all players
 const teamStats = 'https://www.balldontlie.io/api/v1/teams'
 const seasonAverages = 'https://www.balldontlie.io/api/v1/players'
 
@@ -16,11 +16,8 @@ fetch(players)
             console.log(data.data) //have to change this so that i can just get a statistic 
             const html = data.data
             .map(user => { //gets a map of all of the queried players first names. 
-                return `<p>Points ${user.pts} 
-                Field: ${user.fgm}
-                ASSISTS: ${user.ast}
-
-                </p>`
+                return `<h5>Lebron James 2018 Averages</h5>
+                <p>Average points per game ${user.pts}</p>`
                 
             })
             .join("") //makes it a bunch of paragraph tags instead of array
@@ -50,7 +47,8 @@ document.addEventListener("DOMContentLoaded", function(){
             console.log(data.data)
             const html = data.data
             .map(user => {
-                return `<p>Team: ${user.city}</p>`
+                return `<h5>Lakers averages 2018</h5>
+                <p>Team: ${user.city}</p>`
             })
             .join("") //makes it a bunch of paragraph tags instead of array
             
