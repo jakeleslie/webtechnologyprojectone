@@ -2,13 +2,14 @@ const players = 'https://www.balldontlie.io/api/v1/season_averages?season=2018&p
 const teamStats = 'https://www.balldontlie.io/api/v1/teams'
 const seasonAverages = 'https://www.balldontlie.io/api/v1/players'
 
+var ps = fetch('https://www.balldontlie.io/api/v1/season_averages?season=2018&player_ids[]=237')
+var ts = fetch('https://www.balldontlie.io/api/v1/teams')
+var sa = fetch('https://www.balldontlie.io/api/v1/players')
 document.addEventListener("DOMContentLoaded", function(){
-function fetchLeftData(){ //Get player stats for lebron james and display them nicely in 2018
-fetch(players)
+    ps
         .then(response => {
             if (!response.ok){
                throw Error("ERROR")
-               
             }
             return response.json()
         })
@@ -18,7 +19,6 @@ fetch(players)
             .map(user => { //gets a map of all of the queried players first names. 
                 return `<h5>Lebron James 2018 Averages</h5>
                 <p>Average points per game ${user.pts}</p>`
-                
             })
             .join("") //makes it a bunch of paragraph tags instead of array
             
@@ -28,15 +28,11 @@ fetch(players)
         .catch(error => {
             console.log(error) //alert for error 
             alert("There was an error requesting data.\n" + error);
-            
         })
-   }
-   fetchLeftData()
 })
 
 document.addEventListener("DOMContentLoaded", function(){
-    function fetchMiddleData(){
-    fetch(teamStats)
+   ts
         .then(response => {
             if (!response.ok){
                throw Error("ERROR")
@@ -59,14 +55,15 @@ document.addEventListener("DOMContentLoaded", function(){
             console.log(error) //alert for error 
             alert("There was an error requesting data.\n" + error);
         })
-    }
     
-    fetchMiddleData()
+    //can do event listeneter for conetent loaded to print out new stuff
+    //On
+    
+   
 })
 
 document.addEventListener("DOMContentLoaded", function(){
-    function fetchRightData(){
-    fetch(seasonAverages)
+   sa
         .then(response => {
             if (!response.ok){
                throw Error("ERROR")
@@ -91,10 +88,7 @@ document.addEventListener("DOMContentLoaded", function(){
             console.log(error) //alert for error 
             alert("There was an error requesting data.\n" + error);
         })
-    }
-        fetchRightData()
 })
-fetchLeftData()
 // fetch middle data waits for the dom content to be load
 // can add this to all three and have that done
 // but then have to figure out a day 
