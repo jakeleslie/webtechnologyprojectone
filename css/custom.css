@@ -1,13 +1,14 @@
+/* All of our css code */
 #listDiv{
     margin-top: 2rem;
-    width: 100%;
+    width: 100%; /* Making the container flex and 100% width, so we can make our content centered */
     display: flex;
 }
 body{
     background-image: url(../imgs/low-poly-grid-haikei.svg);
 }
 .content{
-    width: 33%;
+    width: 33%; /* Since we have three divs, and our width is 100%, 33% is one third of the width so it centers */
     height: 300px;
     background-color: #d3d3d3;
     margin-top: 30px;

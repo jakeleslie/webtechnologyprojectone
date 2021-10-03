@@ -3,7 +3,8 @@
 		<link rel="stylesheet" href="/css/custom.css"/>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">		
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
-		<meta charset="utf-8" />
+		<!-- Including the cdns for bootstrap so we can use some built in classes for styling. -->
+		<meta charset="utf-8" /> 
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 	</head>
 	<body>
@@ -12,7 +13,7 @@
 		<h1 id="title">BALLDONTLIE NBA STATS</h1>
 		</div>
 		
-		<div id="listDiv" class="text-center">
+		<div id="listDiv" class="text-center"> <!-- Creating all of our divs and structural components -->
 			<h2 class="contentTitle">Player Spotlight</h2>
 			<h2 class="contentTitle">Random Game Stats</h2>
 			<h2 class="contentTitle">Random Player Information</h2>
@@ -31,7 +32,7 @@
 		</div>
 		</div>
 		</div>
-		<script src="/js/custom.js"></script> <!-- defer makes the script happen before dom content loaded, and page renders before-->
+		<script src="/js/custom.js"></script> <!-- Linking our js so our page renders the js -->
 	</body>
 </html>
 
