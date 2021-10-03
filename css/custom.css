@@ -24,7 +24,12 @@ body{
   margin-bottom: 6%;
   font-size: 1rem !important;
 }
-
+#midStyle{
+    width: 100%;
+  height: 20px;
+  margin-bottom: 5%;
+  font-size: 1rem !important;
+}
 .contentTitle{
     width: 33%;
     height: 100px;
