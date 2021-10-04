@@ -6,7 +6,7 @@ let ts = fetch('https://www.balldontlie.io/api/v1/games/' + t) //This will retri
 
 let s = randomPlayer = Math.random() * (25 - 1) + 1 //Creating another random variable, this shows us 25 players, but we can do more if we want
 let playerS = s.toString()
-var sa = fetch('https://www.balldontlie.io/api/v1/players/' + playerS) //The same as above, a random players information
+var sa = fetch('https://www.balldontlie.io/api/v1/players/' + playerS) //The same as above, a random players information.
 document.addEventListener("DOMContentLoaded", function(){ //We do it this way so when the doms content is loaded we run our fetch request. We do it like this so we have fresh data everytime
     //and so that we have the page render before api response 
     ps
